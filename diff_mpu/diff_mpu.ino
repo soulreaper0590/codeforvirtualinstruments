@@ -6,6 +6,7 @@ const int in=13;
 int arrayX;
 int arrayY;
 int arrayZ;
+int count;
 void setup(){
   Wire.begin();
   Wire.beginTransmission(MPU_addr);
@@ -39,14 +40,14 @@ void loop (){
 
   true_cm = 2.54*dur;
   true_cm = true_cm/100;
-   if(true_cm>50){
-  Serial.println(String("away keystroke(nothing)"));
+  if(true_cm>50){
+    //Serial.println(String("away keystroke(nothing)"));
   }
   else if(true_cm<38){
-  Serial.println(String("this is the base keysrokes(base)"));
+    //Serial.println(String("this is the base keysrokes(base)"));
   }
   else{
-  Serial.println(String("this the uppermost part keysrtoke(theupper)"));
+    //Serial.println(String("this the uppermost part keysrtoke(theupper)"));
   }
 
   if(AcX<0){
@@ -60,22 +61,41 @@ void loop (){
   }
 
 
+
   arrayX = arrayX - AcX;
   arrayY = arrayY - AcY;
-  arrayZ = arrayZ - AcZ; 
-  
+  arrayZ = arrayZ - AcZ;
 
-//  Serial.println(String("the value was")+ true_cm);
-  Serial.print("AcX = "); 
-  Serial.print(arrayX);
-  Serial.print(" | AcY = "); 
-  Serial.print(arrayY);
-  Serial.print(" | AcZ = "); 
-  Serial.print(arrayZ);
-  Serial.print("\n");
- 
-  //delay(10);
-   Serial.print("k");
+
+  //if(arrayX >= 2000||arrayX<=0-2000){
+  //Serial.print(" change in x \n");
+
+  //}
+
+  if(arrayX>= 4000||arrayX<=-4000){
+
+    //  Serial.println(String("the value was")+ true_cm);
+    Serial.print("change in x \n");
+    Serial.print("   "); 
+    Serial.print(arrayX);
+    count++;
+    if (count >= 3){
+      Serial.print("hit");
+      Serial.print(count);
+      Serial.print(" \n ");
+    }
+    // Serial.print("   "); 
+    // Serial.print(arrayY);
+    // Serial.print("    "); 
+    //Serial.print(arrayZ);
+    Serial.print("\n");
+  }
+  else{
+    count = 0;
+  }
+
+  delay(100);
+  //Serial.print("k");
   arrayX = AcX;
   arrayY = AcY;
   arrayZ = AcZ;

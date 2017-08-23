@@ -21,7 +21,7 @@ float accX, accY, accZ;
 float gyroX, gyroY, gyroZ;
 float magX, magY, magZ;
 float tempRaw;
-
+ float yaw2;
 double roll, pitch, yaw; // Roll and pitch are calculated using the accelerometer while yaw is calculated using the magnetometer
 
 double gyroXangle, gyroYangle, gyroZangle; // Angle calculate using the gyro only
@@ -43,6 +43,7 @@ float magOffset[3] = { (MAG0MAX + MAG0MIN) / 2, (MAG1MAX + MAG1MIN) / 2, (MAG2MA
 float magGain[3];
 
 uint32_t timer;
+float avg();
 
 void setup() {
  // Serial.begin(9600);
@@ -87,7 +88,8 @@ void setup() {
   timer = micros(); // Initialize the timer
 
 }
-
+int YAW=0;
+int count=0;
 void loop() {
  /* Update all the IMU values */
   updateMPU6050();
@@ -164,12 +166,24 @@ void loop() {
     gyroYangle = kalAngleY;
   if (gyroZangle < -180 || gyroZangle > 180)
     gyroZangle = kalAngleZ;
+  if (count<20&&count>=10){
+   delay(100); 
+    yaw2 = avg();
+    //YAW= YAW + yaw;
+    //Serial.println(yaw2);
+    Serial.println(yaw);
+  }
+  
+ 
 
-
+if (count>20){
+    float yaw1;
+    yaw1=avg();
+    Serial.println(yaw1-yaw2);
   /* Print Data */
 #if 1
   //Serial.print("roll");
-  Serial.print(roll); Serial.print("\t");
+  //Serial.print(roll); Serial.print("\t");
   /*Serial.print(gyroXangle); Serial.print("\t");
   Serial.print(compAngleX); Serial.print("\t");
   Serial.print(kalAngleX); Serial.print("\t");*/
@@ -177,15 +191,16 @@ void loop() {
   //Serial.print("\t");
 
   //Serial.print("pitch");
-  Serial.print(pitch); Serial.print("\t");
+  // Serial.print(pitch); Serial.print("\t");
   /*Serial.print(gyroYangle); Serial.print("\t");
   Serial.print(compAngleY); Serial.print("\t");
   Serial.print(kalAngleY); Serial.print("\t");*/
 
   //Serial.print("\t");
 
-  //Serial.print("yaw");
-  Serial.print(yaw); Serial.print("\t");
+  //Serial.print("yaw");-
+  //yaw=yaw+180;
+ delay(100);
   /*Serial.print(gyroZangle); Serial.print("\t");
   Serial.print(compAngleZ); Serial.print("\t");
   Serial.print(kalAngleZ); Serial.print("\t");*/
@@ -211,7 +226,7 @@ void loop() {
 #endif*/
 
   Serial.println();
-
+ } count++;
   delay(100);
 }
 
@@ -307,4 +322,37 @@ void calibrateMag() { // Inspired by: https://code.google.com/p/open-headtracker
   Serial.print(",");
   Serial.println(magGain[2]);
 #endif
+}
+float BubbleSort (float arr[], int n)
+{
+  int i, j;
+  for (i = 0; i < n; ++i)
+  {
+    for (j = 0; j < n-i-1; ++j)
+    {
+      // Comparing consecutive data and switching values if value at j > j+1.
+      if (arr[j] > arr[j+1])
+      {
+        arr[j] = arr[j]+arr[j+1];
+        arr[j+1] = arr[j]-arr[j + 1];
+        arr[j] = arr[j]-arr[j + 1];
+      }
+    }
+    // Value at n-i-1 will be maximum of all the values below this index.
+  } float p=0;
+  for(int k=2; k<9; k++)
+    p=p+arr[k];
+
+  return p/7.00;
+} 
+float avg(){
+  float a[10];
+      for(int i=0;i<10;i++)
+    {
+      delay(10);
+      updateYaw();
+      a[i]=yaw;   
+    }
+   yaw=BubbleSort( a , 10 );
+   return yaw;
 }

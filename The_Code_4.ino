@@ -118,26 +118,6 @@ void loop(){
  else if(count==110){
   sum = sum/10.00;
  }
- else{
- float angledif = headingFiltered;
- angledif  = headingFiltered - sum;
-
- if(angledif<-22.5){
-  Serial.println("Crash");
-    }
- if(angledif>-22&&angledif<-10){
-    Serial.println("Tom2");
-    }
- if(angledif<10&&angledif>-10){
-    Serial.println("Snare");
-    }
- if(angledif<22&&angledif>10){
-    Serial.println("Tom1");
-    }
- if(angledif>22){  
-  Serial.println("Hi Hat");
-    }
-  }
  //=========================================================================
   fabo_9axis.readAccelXYZ(&accX,&accY,&accZ);
   fabo_9axis.readGyroXYZ(&gyroX,&gyroY,&gyroZ);
@@ -237,7 +217,29 @@ void loop(){
     a[6] = pitch;
     a[7] = pitch;
     a[8] = pitch;
+
+    if(count>111){
+    
+      float angledif = headingFiltered;
+      angledif  = headingFiltered - sum;
+      Serial.println(angledif);
+      if(angledif<-12){
+        Serial.println("11");
+      }
+      if(angledif>-12&&angledif<-5){
+        Serial.println("55");
+      }
+      if(angledif<10&&angledif>-5){
+        Serial.println("22");
+      }
+      if(angledif<20&&angledif>10){
+        Serial.println("66");
+      }
+      if(angledif>20){  
+        Serial.println("77");
+      }
     }
+   }
    
  //====================Pressure Sensor Code=================================
  float presentValue = analogRead(0);

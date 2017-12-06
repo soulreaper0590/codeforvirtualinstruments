@@ -1,0 +1,13 @@
+putting the new bluetooth modules in at mode
+ for this press the buton and give the power to module
+  and if this is a new module keep the key pressed and give at mode commands 
+
+
+
+   at commands 
+   at
+   at+uart
+   at+orgl
+   at+role= 1
+   (all in caps)
+   at+addr	

@@ -10,8 +10,8 @@ void setup(){
   }
 
  void loop(){
-  float pL = analogRead(0); 
-  float pR = analogRead(11);
+  float pL = analogRead(11); 
+  float pR = analogRead(0);
   int strechL = chord_filter(pL);
   int strechR = chord_filter1(pR);
   float finger1 = analogRead(1);
@@ -37,11 +37,15 @@ void setup(){
 
   
   //Serial.print(finger5t);
- /* Serial.print("left: ");
+  Serial.print("left: ");
   Serial.print(pL);
   Serial.print("ryt: ");
-  Serial.println(pR);*/
-  Serial.println(finger3t);
+  Serial.println(pR);
+  Serial.print("left: ");
+  Serial.print(strechL);
+  Serial.print("ryt: ");
+  Serial.println(strechR);
+
   if(strechL==1){
       if(finger11==1 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
         Serial.println("Cl");
@@ -70,7 +74,7 @@ void setup(){
         Serial.println("Eh");
     
     }
-     if(strechL==3){
+    if(strechL==3){
       if(finger11==1 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
         Serial.println("Chh");
       if(finger11==0 && finger22==1 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
@@ -98,7 +102,7 @@ void setup(){
     
     }
 
- if(strechR==3){
+if(strechR==3){
        if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==1 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
         Serial.println("Fl");
       if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==1 && finger88==0 && finger99==0 && finger1010==0)
@@ -125,7 +129,7 @@ void setup(){
       if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==1)
         Serial.println("Bhh");
     
-    }
+   }
 
    delay(500);
 }
@@ -135,10 +139,10 @@ void setup(){
   if(p>400){
     chord_filtered = 1;
     }
-  if(p<=400&&p>=360){
+  else if(p<=400&&p>=360){
     chord_filtered = 2;
     }
-   else
+  else
     chord_filtered = 3;
   return chord_filtered;
   }
@@ -147,7 +151,7 @@ void setup(){
   if(p>650){
     chord_filtered = 1;
     }
-  if(p<=650 && p>600){
+  else  if(p<=650 && p>600){
     chord_filtered = 2;
     }
     else

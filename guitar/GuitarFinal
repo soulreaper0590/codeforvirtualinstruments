@@ -177,11 +177,11 @@ void setup() {
         int finger44 = fingerStatus4(finger4);
       
         //Printing finger region values
-        Serial.print(finger11);Serial.print("\t"); 
-        Serial.print(finger22);Serial.print("\t");
-        Serial.print(finger33);Serial.print("\t");
-        Serial.print(finger44);Serial.print("\t");
-        Serial.print("\t");
+       // Serial.print(finger11);Serial.print("\t"); 
+        //Serial.print(finger22);Serial.print("\t");
+        //Serial.print(finger33);Serial.print("\t");
+        //Serial.print(finger44);Serial.print("\t");
+        //Serial.print("\t");
       
         switch(region(stretch1))
         {

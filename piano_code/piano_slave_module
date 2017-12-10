@@ -1,0 +1,36 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BTserial(10, 11);
+
+char state;
+char state0;
+ //the pin your button is connected to
+
+int buttonState = 0;
+
+void setup() {
+
+  Serial.begin(9600);
+  BTserial.begin(38400);
+
+}
+
+void loop() {
+
+  if (BTserial.available() > 0) { // Checks whether data is comming from the serial port
+    state = BTserial.read();
+
+    if(state0!=state){
+      Serial.println(state);
+      }
+      state0 = state;
+    // Reads the data from the serial port
+  }
+  else
+  {
+    state0 = 0;
+    }
+  // Controlling the LED
+  //Serial.println(state);
+  delay(50);
+  
+}

@@ -39,7 +39,7 @@ Serial.println(initDist);
 }
 
 void loop() {
-  initDist=43;
+  //initDist=43;
 // Clears the trigPin
 digitalWrite(trigPin, LOW);
 delayMicroseconds(2);
@@ -59,13 +59,13 @@ if (distance>=50)
   change='A';
 if(distance<=10&&change=='A')
   {Serial.println('L');
-  change=='B';}
+  change='B';}
 else if(distance>10&&distance<=40&&change=='A')
   {Serial.println('M');
-  change=='B';}
+  change='B';}
 //else if(distance>18&&distance<35&&change=='A')
   //{Serial.println('H');
-  //change=='B';}
+  //change='B';}
 
   delay(150);
 

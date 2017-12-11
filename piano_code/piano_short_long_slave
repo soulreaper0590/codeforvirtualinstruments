@@ -24,6 +24,6 @@ void loop() {
     Serial.println(state);// Reads the data from the serial port
   }
 
-  delay(50);
+  delay(100);
   
 }

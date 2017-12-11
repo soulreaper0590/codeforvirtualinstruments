@@ -160,7 +160,7 @@ void setup() {
       if(pitchnow<0)
       {
         //FINGERING XD
-        float stretch1=analogRead(0);
+        float stretch1=analogRead(5);
         int stretch11=region(stretch1);//gives the 3 different regions 3:no stretch to 1:full stretch
         //Serial.println(stretch11);
       

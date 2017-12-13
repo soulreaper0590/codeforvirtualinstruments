@@ -12,7 +12,7 @@ while 1:
       keyboard.press('z')
       print ("hell is here friend")
       while 1:
-        time.sleep(2)
+        time.sleep(.1)
         data = Var1.read()
         print ("cello the best company ever")
         if data != b'A':

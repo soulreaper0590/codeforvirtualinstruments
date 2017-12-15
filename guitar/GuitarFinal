@@ -263,13 +263,13 @@ int fingerStatus3(float finger){
 int fingerStatus4(float finger){
     int fingerReturn= 0;
      
-    if(finger>=360){
+    if(finger>=400){
       fingerReturn=0;
       }
-      if(finger<360&&finger>=310){
+      if(finger<400&&finger>=300){
         fingerReturn = 1;
         }
-       if(finger<310)
+       if(finger<300)
        fingerReturn=2;
     
     

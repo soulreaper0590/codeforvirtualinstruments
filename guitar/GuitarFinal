@@ -248,13 +248,13 @@ void setup() {
 int fingerStatus3(float finger){
     int fingerReturn= 0;
      
-    if(finger>=400){
+    if(finger>=480){
       fingerReturn=0;
       }
-      if(finger<420&&finger>=300){
+      if(finger<480&&finger>=350){
         fingerReturn = 1;
         }
-       if(finger<300)
+       if(finger<350)
        fingerReturn=2;
     
     

@@ -1,0 +1,102 @@
+ #include <SoftwareSerial.h>
+SoftwareSerial BTserial(10, 11);
+
+  void setup() {
+  Serial.begin(9600);
+  BTserial.begin(38400);
+
+}
+//0-3 analog pins are for playing one of four strings and 4-7 for frets
+void loop() {
+  
+ float s1=analogRead(0);
+ float s2=analogRead(1);
+  float s3=analogRead(2);
+  float s4=analogRead(3);
+  float F1=analogRead(4);
+  float F2=analogRead(5);
+  float F3=analogRead(6);
+  float F4=analogRead(7);
+  //Serial.println(s4);
+  if(s1<240)//right hand first finger
+    {
+      if(F1<395)//left hand first finger and so on
+       { Serial.println('z');
+        BTserial.write('z');}
+      else if(F2<270)
+        {Serial.println('x');
+        BTserial.write('x');}
+      else if(F3<325)
+       { Serial.println('c');
+        BTserial.write('c');}
+      else if(F4<355)
+        {Serial.println('v');
+        BTserial.write('v');}
+      else 
+        {Serial.println('1');//open strings
+        BTserial.write('1');}
+
+    }
+   
+  if(s2<340)//right hand second
+  {
+      if(F1<395)
+        {Serial.println('a');
+        BTserial.write('a');}
+      else if(F2<270)
+        {Serial.println('s');
+        BTserial.write('s');}
+      else if(F3<325)
+        {Serial.println('d');
+        BTserial.write('d');}
+      else if(F4<355)
+        {Serial.println('f');
+        BTserial.write('f');}
+      else
+        {Serial.println('2');
+        BTserial.write('2');}
+
+  }
+   
+  if(s3<235)
+  {
+      if(F1<395)
+        {Serial.println('q');
+        BTserial.write('q');}
+      else if(F2<270)
+        {Serial.println('w');
+        BTserial.write('w');}
+      else if(F3<325)
+       { Serial.println('e');
+        BTserial.write('e');}
+      else if(F4<355)
+        {Serial.println('r');
+        BTserial.write('r');}
+      else 
+        {Serial.println('3');
+        BTserial.write('3');}
+
+  }
+   
+  if(s4<300)
+  {
+     if(F1<395)
+       { Serial.println('p');
+        BTserial.write('p');}
+     else if(F2<270)
+       { Serial.println('o');
+        BTserial.write('o');}
+     else if(F3<325)
+       { Serial.println('i');
+        BTserial.write('i');}
+     else if(F4<355)
+      {  Serial.println('u');
+        BTserial.write('u');}
+     else
+        {Serial.println('4');
+        BTserial.write('4');}
+
+  }
+delay(100);
+    
+}

@@ -1,0 +1,27 @@
+//increase delay in both slave and master
+
+#include <SoftwareSerial.h>
+SoftwareSerial BTserial(10, 11);
+
+char state;
+
+
+void setup() {
+
+  Serial.begin(9600);
+  BTserial.begin(38400);
+
+ 
+}
+
+void loop() {
+
+  if (BTserial.available() > 0) { // Checks whether data is comming from the serial port
+  
+    state = BTserial.read();
+    Serial.println(state);// Reads the data from the serial port
+  }
+ 
+  delay(100);
+  
+}

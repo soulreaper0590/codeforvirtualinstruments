@@ -1,0 +1,79 @@
+void setup() {
+  Serial.begin(9600);
+  
+
+}
+//0-3 analog pins are for playing one of four strings and 4-7 for frets
+void loop() {
+  
+ float s1=analogRead(0);
+ float s2=analogRead(1);
+  float s3=analogRead(2);
+  float s4=analogRead(3);
+  float F1=analogRead(4);
+  float F2=analogRead(5);
+  float F3=analogRead(6);
+  float F4=analogRead(7);
+  //Serial.println(s4);
+  if(s1<240)//right hand first finger
+    {
+      if(F1<395)//left hand first finger and so on
+        Serial.println('z');
+      else if(F2<270)
+        Serial.println('x');
+      else if(F3<325)
+        Serial.println('c');
+      else if(F4<355)
+        Serial.println('v');
+      else 
+        Serial.println('1');//open strings
+
+    }
+   
+  if(s2<340)//right hand second
+  {
+      if(F1<395)
+        Serial.println('a');
+      else if(F2<270)
+        Serial.println('s');
+      else if(F3<325)
+        Serial.println('d');
+      else if(F4<355)
+        Serial.println('f');
+      else
+        Serial.println('2');
+
+  }
+   
+  if(s3<235)
+  {
+      if(F1<395)
+        Serial.println('q');
+      else if(F2<270)
+        Serial.println('w');
+      else if(F3<325)
+        Serial.println('e');
+      else if(F4<355)
+        Serial.println('r');
+      else 
+        Serial.println('3');
+
+  }
+   
+  if(s4<300)
+  {
+     if(F1<395)
+        Serial.println('p');
+     else if(F2<270)
+        Serial.println('o');
+     else if(F3<325)
+        Serial.println('i');
+     else if(F4<355)
+        Serial.println('u');
+     else
+        Serial.println('4');
+
+  }
+delay(100);
+    
+}

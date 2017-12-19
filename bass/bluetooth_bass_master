@@ -18,18 +18,18 @@ void loop() {
   float F3=analogRead(6);
   float F4=analogRead(7);
   //Serial.println(s4);
-  if(s1<240)//right hand first finger
+  if(s1<265)//right hand first finger
     {
-      if(F1<395)//left hand first finger and so on
+      if(F1<385)//left hand first finger and so on
        { Serial.println('z');
         BTserial.write('z');}
-      else if(F2<270)
+      else if(F2<262)
         {Serial.println('x');
         BTserial.write('x');}
-      else if(F3<325)
+      else if(F3<278)
        { Serial.println('c');
         BTserial.write('c');}
-      else if(F4<355)
+      else if(F4<347)
         {Serial.println('v');
         BTserial.write('v');}
       else 
@@ -38,18 +38,18 @@ void loop() {
 
     }
    
-  if(s2<340)//right hand second
+  if(s2<345)//right hand second
   {
-      if(F1<395)
+      if(F1<385)
         {Serial.println('a');
         BTserial.write('a');}
-      else if(F2<270)
+      else if(F2<262)
         {Serial.println('s');
         BTserial.write('s');}
-      else if(F3<325)
+      else if(F3<278)
         {Serial.println('d');
         BTserial.write('d');}
-      else if(F4<355)
+      else if(F4<347)
         {Serial.println('f');
         BTserial.write('f');}
       else
@@ -58,18 +58,18 @@ void loop() {
 
   }
    
-  if(s3<235)
+  if(s3<310)
   {
-      if(F1<395)
+      if(F1<385)
         {Serial.println('q');
         BTserial.write('q');}
-      else if(F2<270)
+      else if(F2<262)
         {Serial.println('w');
         BTserial.write('w');}
-      else if(F3<325)
+      else if(F3<278)
        { Serial.println('e');
         BTserial.write('e');}
-      else if(F4<355)
+      else if(F4<347)
         {Serial.println('r');
         BTserial.write('r');}
       else 
@@ -78,18 +78,18 @@ void loop() {
 
   }
    
-  if(s4<300)
+  if(s4<235)
   {
-     if(F1<395)
+     if(F1<385)
        { Serial.println('p');
         BTserial.write('p');}
-     else if(F2<270)
+     else if(F2<262)
        { Serial.println('o');
         BTserial.write('o');}
-     else if(F3<325)
+     else if(F3<278)
        { Serial.println('i');
         BTserial.write('i');}
-     else if(F4<355)
+     else if(F4<347)
       {  Serial.println('u');
         BTserial.write('u');}
      else

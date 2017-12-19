@@ -85,7 +85,22 @@ while(1):
                     time.sleep(0.1)
                     keyboard.release('x')
                     break
-                
+            case '1':keyboard.press('x')
+                    time.sleep(0.1)
+                    keyboard.release('x')
+                    break
+            case '2':keyboard.press('x')
+                    time.sleep(0.1)
+                    keyboard.release('x')
+                    break
+            case '3':keyboard.press('x')
+                    time.sleep(0.1)
+                    keyboard.release('x')
+                    break
+            case '4':keyboard.press('x')
+                    time.sleep(0.1)
+                    keyboard.release('x')
+                    break
         
 
 

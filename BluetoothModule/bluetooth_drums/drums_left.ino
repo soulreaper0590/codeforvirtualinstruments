@@ -9,10 +9,11 @@ int apple=0;
 float pre = 0 ;
 int post = 0;
 int crash;
-int key;
-int chain;
+int key=0;
+int chain=0;
 int b[3]={0};
-
+int orange=0;
+int o[3]={0};
 /* Assign a unique ID to this sensor at the same time */
 Adafruit_HMC5883_Unified mag = Adafruit_HMC5883_Unified(12345);
 
@@ -196,9 +197,25 @@ void loop() {
 
   
 #if 0 // Set to 1 to activate
- 
-#endif
+  
 
+#endif
+ float pro = analogRead(0);
+if((key-chain) > 2){
+//if(b[1]==0){
+if(pro>10){
+ key=chain;
+ //Serial.println("F");
+ orange =1;
+ //o[0]=o[1]=o[2]=0;
+  }
+}
+  o[0]=o[1];
+  o[1]=o[2];
+  o[2]=o[3];
+  o[3]= orange;
+  
+  
   
   a[0] = a[1];
    a[1] = a[2];
@@ -273,56 +290,8 @@ void loop() {
     Serial.println(post);}
 
 
-    float pro = analogRead(3);
-b[1]=b[0];
-b[0]=pro;
-
-if((key-chain) > 2){
-//if(b[1]==0){
-if(pro>10){
-
-if (cool == 0 ){
-    //Serial.println('k');
-    }
-   // crash=99;
-
-
-   
-  if(cool == 1){
-   /* if(crash>100 || crash ==100){
-      
-      Serial.println("CRASH");
-      BTserial.write('x');
-      }*/
-     // else{
-    //delay(1000);
-    if(headingDegrees<post){ 
-      Serial.print("reversee ");
-      Serial.println(headingDegrees);  
-      BTserial.write('a');
-      //sends a 1 through the bluetooth serial link
-         delay(20);
-        }
-    if(headingDegrees>post){
-      Serial.print("blueee ");
-     Serial.println(headingDegrees);
-     BTserial.write('j');
-     delay(20);
-      }
-      
-      //delay(1000);
- //   }
-
-  }
-    
-
   
-  key=chain;
- 
-  }
-//}
-  
-}
+
   if (cool == 0 ){
     //Serial.println('k');
     }
@@ -339,17 +308,27 @@ if (cool == 0 ){
      // else{
     //delay(1000);
     if(headingDegrees<post){ 
-      Serial.print("hello ");
+      
+      Serial.print("H");
       Serial.println(headingDegrees);  
       BTserial.write('s');
       //sends a 1 through the bluetooth serial link
          delay(20);
+        
         }
+        
     if(headingDegrees>post){
-      Serial.print("byyeeeee ");
-     Serial.println(headingDegrees);
-     BTserial.write('d');
-     delay(20);
+      if((o[0]==1)|| (o[1]==1)|| (o[2]==1) || (o[3]==1)){
+      Serial.print("B");
+      Serial.println(headingDegrees);  
+      BTserial.write('d');
+      //sends a 1 through the bluetooth serial link
+         delay(20);}
+         else {
+ Serial.print("N");
+      Serial.println(headingDegrees);  
+      BTserial.write('y');
+          }
       }
       
       //delay(1000);
@@ -371,11 +350,13 @@ if (cool == 0 ){
 }
 pre = pro;*/
 
-  
+
+
   
   apple++;
   delay(50);
   cool = 0;
+  orange=0;
  // tu = 0;
   count++;
   key++;

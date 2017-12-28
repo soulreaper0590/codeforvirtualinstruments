@@ -40,7 +40,7 @@ void setup(){
                           int finger1010 = fingerStatus(finger5t);
 
   
- // Serial.println(finger2t);
+ //Serial.println(finger1t);
  /* Serial.print("left: ");
   Serial.print(pL);
   Serial.print("ryt: ");
@@ -50,27 +50,27 @@ void setup(){
   strechR = 3;
   if(strechL==1){
       if(finger11==1 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
-     {   Serial.print('A');
+     {   Serial.print('D');
          BTserial.write('A');
          cool = 0;
         //delay(500);
          }
       if(finger11==0 && finger22==1 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
-       { Serial.print('B');
+       { Serial.print('C');
          BTserial.write('B');
          
          cool = 0;
         // delay(500);
          }
       if(finger11==0 && finger22==0 && finger33==1 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
-       { Serial.print('C');
+       { Serial.print('B');
          BTserial.write('C');
          cool = 0;
         // delay(500);
          }
       if(finger11==0 && finger22==0 && finger33==0 && finger44==1 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
       {
-        Serial.print('D');
+        Serial.print('A');
          BTserial.write('D');
          cool = 0;
         // delay(500);
@@ -154,7 +154,7 @@ void setup(){
 
  if(strechR==3){
        if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==1 && finger77==0 && finger88==0 && finger99==0 && finger1010==0)
-      {  Serial.print("F");
+      {  Serial.print("K");
         BTserial.write('A');
          cool = 0;
      //   delay(500);
@@ -166,7 +166,7 @@ void setup(){
         //delay(500);
         }
       if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==1 && finger99==0 && finger1010==0)
-       { Serial.print("H");
+       { Serial.print("J");
         BTserial.write('C');
          cool = 0;
        // delay(500);
@@ -178,7 +178,7 @@ void setup(){
      //   delay(500);
         }
      if(finger11==0 && finger22==0 && finger33==0 && finger44==0 && finger55==0 && finger66==0 && finger77==0 && finger88==0 && finger99==0 && finger1010==1)
-      {  Serial.print("J");
+      {  Serial.print("H");
         BTserial.write('E');
          cool = 0;
       //  delay(500);

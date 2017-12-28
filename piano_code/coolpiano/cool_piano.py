@@ -9,19 +9,19 @@ while 1:
     data=Var1.read().decode('ascii');
     print(data)
     if data == 'A':
-      keyboard.press('t')
+      keyboard.press('y')
       print ("hell is here friend")
       while 1:
-        time.sleep(.1)
+        #time.sleep(.1)
         data = Var1.read().decode('ascii');
-        print(data)
+        #print(data)
         print ("cello the best company ever")
         if data != 'A':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('t')
+      keyboard.release('y')
     if data == 'B':
-      keyboard.press('u')
+      keyboard.press('i')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -30,9 +30,9 @@ while 1:
         if data != 'B':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('u')
+      keyboard.release('i')
     if data == 'C':
-      keyboard.press('y')
+      keyboard.press('o')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -41,9 +41,9 @@ while 1:
         if data != 'C':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('y')
+      keyboard.release('o')
     if data == 'D':
-      keyboard.press('i')
+      keyboard.press('p')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -52,9 +52,9 @@ while 1:
         if data != 'D':
           print ("cello doesnt loook so good now huh")
           break
-      keyboard.release('i')
+      keyboard.release('p')
     if data == 'E':
-      keyboard.press('p')
+      keyboard.press('[')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -63,21 +63,21 @@ while 1:
         if data != 'E':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('p')
-    if data == 'F':
-      keyboard.press('z')
+      keyboard.release('[')
+    if data == 'K':
+      keyboard.press('7')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
         data = Var1.read().decode('ascii');
         print(data)
         print ("cello the best company ever")
-        if data != 'F':
+        if data != 'K':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('z')
+      keyboard.release('7')
     if data == 'G':
-      keyboard.press('x')
+      keyboard.press('q')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -86,9 +86,9 @@ while 1:
         if data != 'G':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('x')
+      keyboard.release('q')
     if data == 'H':
-      keyboard.press('c')
+      keyboard.press('w')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -97,9 +97,9 @@ while 1:
         if data != 'H':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('c')
+      keyboard.release('w')
     if data == 'I':
-      keyboard.press('v')
+      keyboard.press('r')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -108,9 +108,9 @@ while 1:
         if data != 'I':
           print ("cello doesnt loook so good now huh")
           break
-      keyboard.release('v')
+      keyboard.release('r')
     if data == 'J':
-      keyboard.press('b')
+      keyboard.press('t')
       print ("hell is here friend")
       while 1:
         #time.sleep(.1)
@@ -119,6 +119,6 @@ while 1:
         if data != 'J':
             print ("cello doesnt loook so good now huh")
             break
-      keyboard.release('b')
+      keyboard.release('t')
    
    

@@ -6,8 +6,8 @@ from threading import Thread
 
 import win32com.client as comclt#provides a lot of modules so better to keep it
 
-ser1 = serial.Serial('COM6',9600)
-ser2 = serial.Serial('COM9',9600)
+ser1 = serial.Serial('COM4',9600)
+ser2 = serial.Serial('COM16',9600)
 wsh= comclt.Dispatch("WScript.Shell")#used for key press in python.
 
 def firstfunction():
@@ -26,10 +26,10 @@ def firstfunction():
         # time.sleep(0.1)
          if(data1[0]=='H'):   #making an array is an important task in python
                 time.sleep(0.05)
-                keyboard.write('o')
+                keyboard.write('g')
                 #print(arduinoc);
                 time.sleep(0.05)
-                keyboard.release('o')
+                keyboard.release('g')
                
          if(data1[0]=='B'):   #making an array is an important task in python
                 time.sleep(0.05)
@@ -60,10 +60,10 @@ def secondfunction():
                 
          if(data2[0]=='W'):   #making an array is an important task in python
                 time.sleep(0.05)
-                keyboard.write('h')
+                keyboard.write('o')
                 #print(arduinoc);
                 time.sleep(0.05)
-                keyboard.release('h')
+                keyboard.release('o')
                 
          if(data2[0]=='E'):   #making an array is an important task in python
                 time.sleep(0.05)
@@ -76,6 +76,4 @@ t1 = Thread(target = firstfunction)
 t2 = Thread(target = secondfunction)
 t1.start()
 t2.start()
-    
-
     

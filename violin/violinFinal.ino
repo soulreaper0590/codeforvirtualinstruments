@@ -6,7 +6,7 @@ int region(float stretch);
 #include <Wire.h>
 #include <FaBo9Axis_MPU9250.h>
 #include <Kalman.h> // Source: https://github.com/TKJElectronics/KalmanFilter
-float p,q,r,s;
+
 FaBo9Axis fabo_9axis;
 
 #define RESTRICT_PITCH // Comment out to restrict roll to ±90deg instead - please read: http://www.freescale.com/files/sensors/doc/app_note/AN3461.pdf
@@ -42,10 +42,6 @@ void setup() {
     Serial.println("device error");
     while(1);
   }
- /* float ax,ay,az;
-  float gx,gy,gz;
-  
-  float temp;*/
   
   fabo_9axis.readAccelXYZ(&accX,&accY,&accZ);
   fabo_9axis.readGyroXYZ(&gyroX,&gyroY,&gyroZ);
@@ -67,22 +63,7 @@ void setup() {
   compAngleX = roll;
   compAngleY = pitch;
 
-
-
   timer = micros();
-
-  //Auto calibration
-  delay(1000);
-  p = analogRead(2)+0.00;
-  q = analogRead(3)+10
-  .00;
-  r = analogRead(4)+10.00;
-  s = analogRead(5)+20.00;
-  
-  Serial.print(p);Serial.print("\t");
-    Serial.print(q);Serial.print("\t");
-      Serial.print(r);Serial.print("\t");
-        Serial.print(s);Serial.println("\t");
 }
 
  void loop(){
@@ -149,7 +130,6 @@ void setup() {
   //Printing pitch value
   //Serial.println(pitch); 
   
-  float stretch1=analogRead(5);
 //Reading of 4 different flexes attached
  
   float finger1 = analogRead(2);
@@ -157,8 +137,10 @@ void setup() {
   float finger3 = analogRead(4);
   float finger4 = analogRead(5);
   
-  int pro = analogRead(8);
-  int safe[3]= {0};
+  int pressureSensor1 = analogRead(8);
+  int pressureSensor2 = analogRead(1);
+  int safe1[3]= {0};
+  int safe2[3]= {0};
    
 //getting the each finger region
  
@@ -167,8 +149,10 @@ void setup() {
   int finger33 = fingerStatus3(finger3);
   int finger44 = fingerStatus4(finger4);
 
-  safe[0] = safe[1];
-  safe[1] = pro;
+  safe1[0] = safe1[1];
+  safe1[1] = pressureSensor1;
+  safe2[0] = safe2[1];
+  safe2[1] = pressureSensor2;
  //e Serial.println(pro);
             
  //Serial.print(finger11);Serial.print("\t");Serial.print(finger22);Serial.print("\t");Serial.print(finger33);Serial.print("\t");Serial.print(finger44);Serial.print("\t");Serial.println(pro);
@@ -180,7 +164,7 @@ void setup() {
    a[3] = a[4];
    a[4] = pitch;
 //Serial.println(pro);
-if((safe[0]+safe[1])/2<900){
+if((safe1[0]+safe1[1])/2<900){
 ///////////////////////first octave\\\\\\\\\\\\\\\\\\\\\\\
 //Second String 
  if(a[0]<0 && a[1]<0 && a[2]<0 && a[3]<0 && a[4]<0){
@@ -190,15 +174,12 @@ if((safe[0]+safe[1])/2<900){
    else if(finger11==0&&finger22==0&&finger33==0&&finger44==2){
     Serial.print("C");//ne
    }
-   else if(finger11==2&&finger22==2&&finger33==2&&finger44==2){
+   else if(finger11==0&&finger22==0&&finger33==0&&finger44==0&&(safe2[0]+safe2[1])/2>500){
     Serial.print("2");//pa
    }
    else if(finger11==0&&finger22==0&&finger33==2&&finger44==0){
     Serial.print("D");//da
    }
-  /* else if(finger11==2&&finger22==2&&finger33==0&&finger44==2){
-    Serial.print("0");
-   }*/
    else if(finger11==0&&finger22==2&&finger33==0&&finger44==0){
     Serial.print("A");
    }
@@ -217,13 +198,13 @@ if(a[0]>0 && a[1]>0 && a[2]>0 && a[3]>0 && a[4]>0){
     else if(finger11==0&&finger22==2&&finger33==0&&finger44==0){
      Serial.print("h");
     }
-    else if(finger11==0&&finger22==2&&finger33==0&&finger44==2){
+    else if(finger11==0&&finger22==0&&finger33==0&&finger44==2&&(safe2[0]+safe2[1])/2>500){
      Serial.print("i");
     }
     else if(finger11==0&&finger22==0&&finger33==2&&finger44==0){
      Serial.print("j");
     }
-    else if(finger11==2&&finger22==2&&finger33==2&&finger44==2){
+    else if(finger11==0&&finger22==0&&finger33==0&&finger44==0){
      Serial.print("1");
     }
     else if(finger11==0&&finger22==0&&finger33==0&&finger44==2) {
@@ -244,15 +225,12 @@ if(a[0]<0 && a[1]<0 && a[2]<0 && a[3]<0 && a[4]<0){
   else if(finger11==0&&finger22==0&&finger33==0&&finger44==2){
     Serial.print("c");//ne
    }
-  else if(finger11==2&&finger22==2&&finger33==2&&finger44==2){
+  else if(finger11==0&&finger22==0&&finger33==0&&finger44==0&&(safe2[0]+safe2[1])/2>500){
     Serial.print("e");//pa
    }
   else if(finger11==0&&finger22==0&&finger33==2&&finger44==0){
     Serial.print("d");//da
   }
-  /*else if(finger11==2&&finger22==2&&finger33==0&&finger44==2){
-    Serial.print("0");
-  }*/
   else if(finger11==0&&finger22==2&&finger33==0&&finger44==0){
     Serial.print("a");
   }
@@ -271,18 +249,15 @@ if (a[0]>0 && a[1]>0 && a[2]>0 && a[3]>0 && a[4]>0){
     else if(finger11==0&&finger22==2&&finger33==0&&finger44==0){
      Serial.print("H");
     }
-    else if(finger11==0&&finger22==2&&finger33==0&&finger44==2){
+    else if(finger11==0&&finger22==0&&finger33==0&&finger44==2&&(safe2[0]+safe2[1])/2>500){
      Serial.print("I");
     }
     else if(finger11==0&&finger22==0&&finger33==0&&finger44==2){
      Serial.print("J");
     }          
-    else if(finger11==2&&finger22==2&&finger33==2&&finger44==2){
+    else if(finger11==2&&finger22==2&&finger33==2&&finger44==2&&(safe2[0]+safe2[1])/2>500){
      Serial.print("E");
     }
-    /*else if(finger11==0&&finger22==0&&finger33==0&&finger44==2) {
-     Serial.print("3");
-     }*/
     else{
      Serial.print("0");
     }
@@ -295,11 +270,11 @@ int fingerStatus1(float finger)//185
 {
   int fingerReturn= 0;
    
-  if(finger>=p){
+  if(finger>=185){
     fingerReturn=0;
     }
    
-     if(finger<p)
+     if(finger<185)
      fingerReturn=2;
   
   
@@ -309,11 +284,11 @@ int fingerStatus1(float finger)//185
   {
   int fingerReturn= 0;
    
-  if(finger>=q){
+  if(finger>=167){
     fingerReturn=0;
     }
    
-     if(finger<q)
+     if(finger<167)
      fingerReturn=2;
   
   
@@ -323,11 +298,11 @@ int fingerStatus3(float finger)//200
 {
   int fingerReturn= 0;
    
-  if(finger>=r){
+  if(finger>=200){
     fingerReturn=0;
     }
     
-     if(finger<r)
+     if(finger<200)
      fingerReturn=2;
   
   
@@ -337,11 +312,11 @@ int fingerStatus4(float finger)//280
 {
   int fingerReturn= 0;
    
-  if(finger>=s){
+  if(finger>=280){
     fingerReturn=0;
     }
     
-     if(finger<s)
+     if(finger<280)
      fingerReturn=2;
   
   
@@ -350,16 +325,3 @@ int fingerStatus4(float finger)//280
 
   
 
-int region(float stretch)
-{
-  int regionReturn=0;
-  if(stretch<495)
-    regionReturn=1;
-  else if(stretch>=495)
-    regionReturn=2;
- // else 
-   // regionReturn=3;
-  return regionReturn;
-}
-
-  
